@@ -6,4 +6,4 @@ RUN apk add --no-cache bash curl jq mosquitto-clients
 COPY run.sh /app/run.sh
 RUN chmod a+x /app/run.sh
 
-ENTRYPOINT ["/app/run.sh"]
+CMD ["/app/run.sh"]
