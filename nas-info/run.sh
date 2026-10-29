@@ -13,7 +13,7 @@ humanize() {   # $1 = Bytes -> "wert|einheit"  (unter 0,5 eine Einheit kleiner)
     while (i<n && (v/1024)>=0.5) { v=v/1024; i++ }
     s = (i==1) ? sprintf("%d",v) : sprintf("%.1f",v);
     sub(/\.0$/,"",s);
-    printf "%s|%s\n", s, u[i];
+    printf "%s %s\n", s, u[i];
   }'
 }
 
@@ -97,6 +97,6 @@ while :; do
   post "sensor.nas_info_speicher" "$FOUND" \
     "$(jq -cn --argjson f "$FILTER" --arg ts "$TS" --arg i "$INTERVAL" \
        '{interval:($i|tonumber), last_check:$ts, selected:$f}')"
-  echo "Anzahl gefundener Netzwerkspeicher: $FOUND | nöchster Durchlauf in ${INTERVAL}s"
+  echo "Anzahl gefundener Netzwerkspeicher: $FOUND | nächster Durchlauf in ${INTERVAL}s"
   sleep "$INTERVAL"
 done
