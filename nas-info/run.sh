@@ -91,7 +91,7 @@ while :; do
     post "sensor.nas_info_${S}_auslastung" "$PCT" \
       "$(jq -cn --argjson b "$A_BASE" --arg ts "$TS" \
          '$b + {unit_of_measurement:"%", state_class:"measurement", last_check:$ts}')"
-    echo "$NAME ($S): ${PCT}% belegt, $(humanize "$FREE")"
+    echo "$NAME ($S): ${PCT}% belegt, $(humanize "$FREE") frei."
   done <<< "$MOUNTS"
 
   post "sensor.nas_info_speicher" "$FOUND" \
