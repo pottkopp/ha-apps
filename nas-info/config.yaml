@@ -1,0 +1,25 @@
+name: NAS-Info
+version: "1.0.0"
+slug: nas_info
+description: >-
+  Erkennt alle eingebundenen Netzwerk-Speicher automatisch und meldet deren
+  Belegung (gesamt, belegt, frei, Auslastung) als Sensoren an Home Assistant.
+url: "https://github.com/pottkopp/ha-apps"
+arch:
+  - aarch64
+  - amd64
+  - armhf
+  - armv7
+  - i386
+  - x86_64
+startup: services
+boot: auto
+hassio_api: true
+hassio_role: manager
+homeassistant_api: true
+options:
+  interval: 300
+  mounts: []
+schema:
+  interval: int(30..86400)
+  mounts: "list(str)?"
